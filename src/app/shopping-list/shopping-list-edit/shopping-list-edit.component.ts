@@ -9,6 +9,7 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
 export class ShoppingListEditComponent implements OnInit {
   constructor() { }
   @Output('added') ingredient = new EventEmitter<Ingredient>()
+  @Output('cleared') clearList = new EventEmitter<void>()
   @ViewChild('name',{static:false}) name = ElementRef
   @ViewChild('amount',{static:false}) amount = ElementRef
   ngOnInit(): void {
@@ -26,7 +27,7 @@ export class ShoppingListEditComponent implements OnInit {
 
   }
   onClear(){
-
+    this.clearList.emit()
   }
 
 }
