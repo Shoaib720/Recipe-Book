@@ -10,18 +10,18 @@ export class ShoppingListEditComponent implements OnInit {
   constructor() { }
   @Output('added') ingredient = new EventEmitter<Ingredient>()
   @Output('cleared') clearList = new EventEmitter<void>()
-  @ViewChild('name',{static:false}) name = ElementRef
-  @ViewChild('amount',{static:false}) amount = ElementRef
+  
   ngOnInit(): void {
+    
   }
-  onAdd(){
+  onAdd(nameInput : HTMLInputElement,amountInput : HTMLInputElement){
     // this.ing.name = this.name.nativeElement.value
     // this.ing.amount = this.amount.nativeElement.value
     // this.ingAmount = this.amount.nativeElement.value
     // console.log(this.name.nativeElement.value)
     // console.log(this.name.nativeElement.value)
     // console.log(this.amount.nativeElement.value)
-    this.ingredient.emit({name : this.name.nativeElement.value, amount : this.amount.nativeElement.value})
+    this.ingredient.emit({name : nameInput.value, amount : parseInt(amountInput.value)})
   }
   onDelete(){
 
