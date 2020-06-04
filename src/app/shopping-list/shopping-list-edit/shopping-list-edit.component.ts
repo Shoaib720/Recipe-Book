@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
-import { Ingredient } from 'src/app/shared/ingredient.model';
+import { Component, OnInit} from '@angular/core';
+// import { Ingredient } from 'src/app/shared/ingredient.model';
+import { ShoppingListService } from 'src/app/shared/shoppingListService.service';
 
 @Component({
   selector: 'app-shopping-list-edit',
@@ -7,27 +8,26 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
   styleUrls: ['./shopping-list-edit.component.css']
 })
 export class ShoppingListEditComponent implements OnInit {
-  constructor() { }
-  @Output('added') ingredient = new EventEmitter<Ingredient>()
-  @Output('cleared') clearList = new EventEmitter<void>()
-  
+  constructor(private shoppingService : ShoppingListService) { }
+  // @Output('added') ingredient = new EventEmitter<Ingredient>()
+  // @Output('cleared') clearList = new EventEmitter<void>()
+  // ingredient : Ingredient
   ngOnInit(): void {
     
   }
   onAdd(nameInput : HTMLInputElement,amountInput : HTMLInputElement){
-    // this.ing.name = this.name.nativeElement.value
-    // this.ing.amount = this.amount.nativeElement.value
-    // this.ingAmount = this.amount.nativeElement.value
-    // console.log(this.name.nativeElement.value)
-    // console.log(this.name.nativeElement.value)
-    // console.log(this.amount.nativeElement.value)
-    this.ingredient.emit({name : nameInput.value, amount : parseInt(amountInput.value)})
+    console.log('in list edit comp add')
+    console.log({name : nameInput.value, amount : parseInt(amountInput.value)})
+    this.shoppingService.addIngredient({name : nameInput.value, amount : parseInt(amountInput.value)})
+    
   }
   onDelete(){
 
   }
   onClear(){
-    this.clearList.emit()
+    // console.log('in list edit comp clear')
+    this.shoppingService.clearIngredients()
+    // this.clearList.emit()
   }
 
 }
