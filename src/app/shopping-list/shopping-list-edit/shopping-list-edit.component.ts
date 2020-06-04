@@ -16,10 +16,11 @@ export class ShoppingListEditComponent implements OnInit {
     
   }
   onAdd(nameInput : HTMLInputElement,amountInput : HTMLInputElement){
-    console.log('in list edit comp add')
-    console.log({name : nameInput.value, amount : parseInt(amountInput.value)})
+    // console.log('in list edit comp add')
+    // console.log({name : nameInput.value, amount : parseInt(amountInput.value)})
     this.shoppingService.addIngredient({name : nameInput.value, amount : parseInt(amountInput.value)})
-    
+    nameInput.value = ''
+    amountInput.value = ''
   }
   onDelete(){
 
