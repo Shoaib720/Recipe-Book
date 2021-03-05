@@ -11,7 +11,10 @@ export class ShoppingListService{
 
   // ShoppingListComponent
   ingredientsChanged = new Subject<Ingredient[]>();
-  private ingredients: Ingredient[] = [];
+  private ingredients: Ingredient[] = [
+    new Ingredient("Tomatoes", 3),
+    new Ingredient("Onions", 2)
+  ];
 
   getIngredientsCount(){
     return this.ingredients.length;
